@@ -1,24 +1,6 @@
 /* eslint-disable no-console */
 import {similarObjects} from './data.js';
 
-// removeChild(), из узла удалить.
-// appendChild(),  вставить в узел.
-// replaceChild(); заменить потомка.
-// insertBefore(); inserAfter() вставить в узел
-// append() более новый. его использовать.
-// .innerHTML = '<a href =''></a>
-// body.innerHTML = body.innerHTML + '<button>'; в конце кнопка
-// body.insertAdjscentHTML('beforeend', '<button>')
-// body.insertAdjscentText('beforeend', 'fghf')
-// const fragment = d.createdocFragment;
-// for (let i) {
-//   const newELement = d.createElement(div)
-//   newELement.classList.add();
-//   DocumentFragment.append(newElement)
-// }
-// pool.append(fragment)
-
-
 const similarCardsPlace =  document.querySelector('#map-canvas');
 const objectTemplate = document.querySelector('#card').content.querySelector('.popup');
 const similarCards = similarObjects();

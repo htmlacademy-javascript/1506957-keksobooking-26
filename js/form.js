@@ -17,7 +17,7 @@ const notActiveStatus = function () {
   filterForm.classList.add('ad-form--disabled');
   filterFormChildrenArray.forEach((children) =>
     children.setAttribute('disabled', 'true'));
-  console.log (filterFormChildrenArray);
+
 };
 // АКТИВНОЕ
 const activeStatus = function(){
@@ -32,3 +32,6 @@ const activeStatus = function(){
   filterFormChildrenArray.forEach((children) =>
     children.removeAttribute('disabled'));
 };
+
+notActiveStatus();
+activeStatus();

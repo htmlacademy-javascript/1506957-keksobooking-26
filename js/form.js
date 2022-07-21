@@ -65,12 +65,12 @@ pristine.addValidator(
 
 //Валидация цены
 function priceValidation (price) {
-  return price.length && parseInt(price, 10) <= PRICE_RANGE.max;
+  return price.length && parseInt(price, 10) <= PRICE_RANGE.max && parseInt(price, 10) > PRICE_RANGE.min;
 }
 pristine.addValidator(
   adForm.querySelector('#price'),
   priceValidation,
-  `Стоимость не больше ${PRICE_RANGE.max}`
+  `Стоимость от ${PRICE_RANGE.min} до ${PRICE_RANGE.max} рублей`
 );
 
 //Валидация количество комнат\мест

@@ -4,7 +4,7 @@ import {similarObjects} from './data.js';
 const similarCardsPlace =  document.querySelector('#map-canvas');
 const objectTemplate = document.querySelector('#card').content.querySelector('.popup');
 const similarCards = similarObjects();
-const TYPESONRUSSIAN = {
+const TYPES_IN_RUSSIAN = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
   house: 'Дом',
@@ -30,7 +30,7 @@ similarCards.forEach((card) => {
     cardPrice.classList.add('hidden');
   }
 
-  const cardType = cardElement.querySelector('.popup__type').textContent = TYPESONRUSSIAN[card.offer.type];
+  const cardType = cardElement.querySelector('.popup__type').textContent = TYPES_IN_RUSSIAN[card.offer.type];
   if (!cardType) {
     cardType.classList.add('hidden');
   }

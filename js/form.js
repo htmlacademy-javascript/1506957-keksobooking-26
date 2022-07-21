@@ -42,27 +42,35 @@ const pristine = new Pristine(adForm, {
   errorTextParent: 'ad-form__element',
   errorTextTag: 'span',
   errorTextClass: 'ad-form__element__error'
-}, false
+},
 );
+const TITLE_WORDS_RANGE = {
+  min: 30,
+  max: 100
+};
+const PRICE_RANGE = {
+  min: 0,
+  max: 100000
+};
 
 // Валидация заголовка
 function titleValidation (value) {
-  return value.length >= 30 && value.length <= 100;
+  return value.length >= TITLE_WORDS_RANGE.min && value.length <= TITLE_WORDS_RANGE.max;
 }
 pristine.addValidator(
   adForm.querySelector('#title'),
   titleValidation,
-  'Заголовок должен быть от 30 до 100 символов'
+  `Заголовок должен быть от ${TITLE_WORDS_RANGE.min} до ${TITLE_WORDS_RANGE.max} символов`
 );
 
 //Валидация цены
-function priceValidation (value) {
-  return value.length >= 0 && value.length <= 100000;
+function priceValidation (price) {
+  return price.length && parseInt(price, 10) <= PRICE_RANGE.max;
 }
 pristine.addValidator(
   adForm.querySelector('#price'),
   priceValidation,
-  'Стоимость не больше 100 000'
+  `Стоимость не больше ${PRICE_RANGE.max}`
 );
 
 //Валидация количество комнат\мест

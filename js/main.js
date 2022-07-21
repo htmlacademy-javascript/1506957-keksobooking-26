@@ -6,3 +6,4 @@ import {similarObjects, SIMILAR_OBJECT_COUNT} from './data.js';
   console.log(similarObjects(SIMILAR_OBJECT_COUNT));
 }
 import './card.js';
+import './form.js';

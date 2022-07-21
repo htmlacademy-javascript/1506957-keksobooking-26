@@ -1,10 +1,5 @@
 /* eslint-disable no-console */
-<<<<<<< HEAD
-
-// НЕАКТИВНОЕ
-=======
 // Неактивное состояние формы
->>>>>>> module8-task1
 const infoFormAd = document.querySelector('.ad-form');
 const fieldsets = infoFormAd.querySelectorAll('fieldset');
 const filterForm = document.querySelector('.map__filters');
@@ -21,15 +16,9 @@ const notActiveStatus = function () {
   filterForm.classList.add('ad-form--disabled');
   filterFormChildrenArray.forEach((children) =>
     children.setAttribute('disabled', 'true'));
-<<<<<<< HEAD
-
-};
-// АКТИВНОЕ
-=======
 };
 
 // Активное состояние формы
->>>>>>> module8-task1
 const activeStatus = function(){
   infoFormAd.classList.remove('ad-form--disabled');
 
@@ -45,8 +34,6 @@ const activeStatus = function(){
 
 notActiveStatus();
 activeStatus();
-<<<<<<< HEAD
-=======
 
 //Валидация объявления
 const adForm = document.querySelector('.ad-form');
@@ -111,4 +98,3 @@ adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   pristine.validate();
 });
->>>>>>> module8-task1

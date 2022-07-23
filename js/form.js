@@ -76,7 +76,7 @@ pristine.addValidator(
 //Валидация количество комнат\мест
 const roomField = document.querySelector('[name="rooms"]');
 const guestField = document.querySelector('[name="capacity"]');
-const roomAndGuestQuantity = {
+const ROOM_AND_GUESTS_QUANTITY = {
   '1 комната': ['для 1 гостя'],
   '2 комнаты': ['для 2 гостей', 'для 1 гостя'],
   '3 комнаты': ['для 3 гостей', 'для 2 гостей', 'для 1 гостя'],
@@ -84,7 +84,7 @@ const roomAndGuestQuantity = {
 };
 
 function validateRoom () {
-  return roomAndGuestQuantity[roomField.value].includes(guestField.value);
+  return ROOM_AND_GUESTS_QUANTITY[roomField.value].includes(guestField.value);
 }
 function getRoomErrorMessage () {
   return  'Количество гостей неверное';

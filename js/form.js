@@ -86,7 +86,6 @@ const roomAndGuestQuantity = {
 function validateRoom () {
   return roomAndGuestQuantity[roomField.value].includes(guestField.value);
 }
-
 function getRoomErrorMessage () {
   return  'Количество гостей неверное';
 }
@@ -97,4 +96,33 @@ pristine.addValidator(guestField, validateRoom, getRoomErrorMessage);
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   pristine.validate();
+});
+
+//Валидация тип жилья
+const typeOfHousing = document.querySelector('#type');
+const MIN_COST_BY_TYPE = {
+  'bungalow': '0',
+  'flat': '1000',
+  'hotel': '3000',
+  'house': '5000',
+  'palace': '10000',
+};
+const placeholderPrice = (price) => MIN_COST_BY_TYPE[price];
+const priceForNight = adForm.querySelector('#price');
+
+typeOfHousing.addEventListener('change', () => {
+  priceForNight.placeholder=placeholderPrice(typeOfHousing.value);
+}
+);
+
+//Валидация поля заезда\выезда
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
+const TIME_VALUE = {
+  '12:00':'12:00',
+  '13:00':'13:00',
+  '14:00':'14:00'
+};
+timeIn.addEventListener('change', () => {
+  timeOut.value = TIME_VALUE[timeIn.value];
 });

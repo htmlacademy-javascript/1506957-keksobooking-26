@@ -1,17 +1,17 @@
 /* eslint-disable no-console */
 import {similarObjects} from './data.js';
 
-const SIMILARCARDSPLACE =  document.querySelector('#map-canvas');
-const OBJECTTEMPLATE = document.querySelector('#card').content.querySelector('.popup');
-const SIMILARCARDS = similarObjects();
-const TYPESONRUSSIAN = {
+const similarCardsPlace =  document.querySelector('#map-canvas');
+const objectTemplate = document.querySelector('#card').content.querySelector('.popup');
+const similarCards = similarObjects();
+const TYPES_IN_RUSSIAN = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
   house: 'Дом',
   palace: 'Дворец',
   hotel: 'Отель',
 };
-const TOADDHIDDENANDCONTENT = (element, content) => {
+const toAddHiddenAndContent = (element, content) => {
   if (element){
     element.textContent = content;
   }
@@ -19,7 +19,7 @@ const TOADDHIDDENANDCONTENT = (element, content) => {
     element.classList.add('hidden');
   }
 };
-const TOADDHIDDENANDSRC = (element, source) => {
+const toAddHiddenAndSrc = (element, source) => {
   if (element){
     element.src = source;
   }
@@ -28,62 +28,62 @@ const TOADDHIDDENANDSRC = (element, source) => {
   }
 };
 
+similarCards.forEach((card) => {
+  const cardElement = objectTemplate.cloneNode(true);
 
-SIMILARCARDS.forEach((card) => {
-  const CARDELEMENT = OBJECTTEMPLATE.cloneNode(true);
+  const cardTitle = cardElement.querySelector('.popup__title');
+  toAddHiddenAndContent(cardTitle, card.offer.title);
 
-  const CARDTITLE = CARDELEMENT.querySelector('.popup__title');
-  TOADDHIDDENANDCONTENT(CARDTITLE, card.offer.title);
+  const cardAddres = cardElement.querySelector('.popup__text--address');
+  toAddHiddenAndContent(cardAddres, card.offer.address);
 
-  const CARDADDRESS = CARDELEMENT.querySelector('.popup__text--address');
-  TOADDHIDDENANDCONTENT(CARDADDRESS, card.offer.address);
+  const cardPrice = cardElement.querySelector('.popup__text--price');
+  toAddHiddenAndContent(cardPrice,`${card.offer.price} ₽/ночь`);
 
-  const CARDPRICE = CARDELEMENT.querySelector('.popup__text--price');
-  TOADDHIDDENANDCONTENT(CARDPRICE,`${card.offer.price} ₽/ночь`);
+  const cardType = cardElement.querySelector('.popup__type');
+  toAddHiddenAndContent(cardType, TYPES_IN_RUSSIAN[card.offer.type]);
 
-  const CARDTYPE = CARDELEMENT.querySelector('.popup__type');
-  TOADDHIDDENANDCONTENT(CARDTYPE, TYPESONRUSSIAN[card.offer.type]);
+  const cardRoomsAndGuests = cardElement.querySelector('.popup__text--capacity');
+  toAddHiddenAndContent(cardRoomsAndGuests, `${card.offer.rooms} комнаты для ${card.offer.guests} гостей`);
 
-  const CARDROOMSANDGUESTS = CARDELEMENT.querySelector('.popup__text--capacity');
-  TOADDHIDDENANDCONTENT(CARDROOMSANDGUESTS, `${card.offer.rooms} комнаты для ${card.offer.guests} гостей`);
+  const cardTime = cardElement.querySelector('.popup__text--time');
+  toAddHiddenAndContent(cardTime, `Заезд после ${card.offer.checkin}, выезд до ${card.offer.checkout}`);
 
-  const CARDTIME = CARDELEMENT.querySelector('.popup__text--time');
-  TOADDHIDDENANDCONTENT(CARDTIME, `Заезд после ${card.offer.checkin}, выезд до ${card.offer.checkout}`);
-
-  const FEATURESCONTAINER = CARDELEMENT.querySelector('.popup__features');
-  const FEATURESLIST = FEATURESCONTAINER.querySelectorAll('.popup__feature');
+  const featuresContainer = cardElement.querySelector('.popup__features');
+  const featuresList = featuresContainer.querySelectorAll('.popup__feature');
   // eslint-disable-next-line prefer-template
-  const MODIFIERS = card.offer.features.map((randomFeature) => 'popup__feature--' + randomFeature);
-  FEATURESLIST.forEach((featuresListItem) => {
-    const MODIFIER = featuresListItem.classList[1];
-    if (!MODIFIERS.includes(MODIFIER)) {
+  const modifiers = card.offer.features.map((randomFeature) => 'popup__feature--' + randomFeature);
+  featuresList.forEach((featuresListItem) => {
+    const modifier = featuresListItem.classList[1];
+    if (!modifiers.includes(modifier)) {
       featuresListItem.remove();
     }
-    if (FEATURESLIST.length === 0) {
-      FEATURESLIST.classList.add('hidden');}
+    if (featuresList.length === 0) {
+      featuresList.classList.add('hidden');}
   });
 
-  const CARDDESCRIPTION = CARDELEMENT.querySelector('.popup__description');
-  TOADDHIDDENANDCONTENT(CARDDESCRIPTION, card.offer.description);
+  const cardDescription = cardElement.querySelector('.popup__description');
+  toAddHiddenAndContent(cardDescription, card.offer.description);
 
-  const POPUPPHOTOS = CARDELEMENT.querySelector('.popup__photos');
-  const TEMPLATEIMG = POPUPPHOTOS.querySelector('img');
-  const PHOTOFRAGMENT = document.createDocumentFragment();
+  const popupPhotos = cardElement.querySelector('.popup__photos');
+  const templateImg = popupPhotos.querySelector('img');
+  const photoFragment = document.createDocumentFragment();
 
-  const CARDOFFERPHOTOS = card.offer.photos;
-  CARDOFFERPHOTOS.forEach((cardPhoto) => {
-    const RANDOMPOPUPPHOTO = TEMPLATEIMG.cloneNode(true);
-    TEMPLATEIMG.remove();
-    TOADDHIDDENANDSRC(RANDOMPOPUPPHOTO, cardPhoto);
-    PHOTOFRAGMENT.append(RANDOMPOPUPPHOTO);
+  const cardOfferPhotos = card.offer.photos;
+  cardOfferPhotos.forEach((cardPhoto) => {
+    const randomPopupPhoto = templateImg.cloneNode(true);
+    templateImg.remove();
+    toAddHiddenAndSrc(randomPopupPhoto, cardPhoto);
+    photoFragment.append(randomPopupPhoto);
   });
 
-  POPUPPHOTOS.appendChild(PHOTOFRAGMENT);
-  const CARDAVATARSRC = CARDELEMENT.querySelector('.popup__avatar');
-  TOADDHIDDENANDSRC(CARDAVATARSRC, card.author.avatar);
+  popupPhotos.appendChild(photoFragment);
+  const cardAvatarSrc = cardElement.querySelector('.popup__avatar');
+  toAddHiddenAndSrc(cardAvatarSrc, card.author.avatar);
 
-  SIMILARCARDSPLACE.appendChild(CARDELEMENT);
+  similarCardsPlace.appendChild(cardElement);
 }
 );
-console.log(SIMILARCARDSPLACE);
+
+console.log(similarCardsPlace);
 

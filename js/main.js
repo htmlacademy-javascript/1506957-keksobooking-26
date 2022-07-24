@@ -7,3 +7,4 @@ import {similarObjects, SIMILAR_OBJECT_COUNT} from './data.js';
 }
 import './card.js';
 import './form.js';
+import './map.js';

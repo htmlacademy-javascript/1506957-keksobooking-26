@@ -1,7 +1,6 @@
 // модуль, который создаёт данные.
 import {getRandomPositiveInteger, getRandomArrayElement, getRandomArrayNoRepeat, getRandomFloat} from './util.js';
 
-
 const SIMILAR_OBJECT_COUNT = 10;
 
 const TITLES = [

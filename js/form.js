@@ -90,3 +90,7 @@ timeIn.addEventListener('change', () => {
   timeOut.value = TIME_VALUE[timeIn.value];
 });
 
+// Валидация поля адрес(координат)
+const address = document.querySelector('#address');
+
+export {address};

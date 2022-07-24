@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import {similarObjects} from './data.js';
 
-const similarCardsPlace =  document.querySelector('#map-canvas');
 const objectTemplate = document.querySelector('#card').content.querySelector('.popup');
 const similarCards = similarObjects();
 const TYPES_IN_RUSSIAN = {
@@ -80,10 +79,7 @@ similarCards.forEach((card) => {
   popupPhotos.appendChild(photoFragment);
   const cardAvatarSrc = cardElement.querySelector('.popup__avatar');
   toAddHiddenAndSrc(cardAvatarSrc, card.author.avatar);
-
-  similarCardsPlace.appendChild(cardElement);
 }
 );
 
-console.log(similarCardsPlace);
 

@@ -1,7 +1,6 @@
 // модуль, который создаёт данные.
 import {getRandomPositiveInteger, getRandomArrayElement, getRandomArrayNoRepeat, getRandomFloat} from './util.js';
 
-
 const SIMILAR_OBJECT_COUNT = 10;
 
 const TITLES = [
@@ -90,5 +89,4 @@ const createObject = (index) => {
 
 function similarObjects(count) {
   return [...Array(count)].map((item, index) => createObject(index));}
-// eslint-disable-next-line no-console
 export {similarObjects, SIMILAR_OBJECT_COUNT};

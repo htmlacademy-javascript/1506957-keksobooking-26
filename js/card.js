@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
-import {similarObjects} from './data.js';
+import {similarObjects, SIMILAR_OBJECT_COUNT} from './data.js';
 
-const similarCardsPlace =  document.querySelector('#map-canvas');
 const objectTemplate = document.querySelector('#card').content.querySelector('.popup');
-const similarCards = similarObjects();
+const similarCards = similarObjects(SIMILAR_OBJECT_COUNT);
 const TYPES_IN_RUSSIAN = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
@@ -34,8 +33,8 @@ similarCards.forEach((card) => {
   const cardTitle = cardElement.querySelector('.popup__title');
   toAddHiddenAndContent(cardTitle, card.offer.title);
 
-  const cardAddres = cardElement.querySelector('.popup__text--address');
-  toAddHiddenAndContent(cardAddres, card.offer.address);
+  const cardAddress = cardElement.querySelector('.popup__text--address');
+  toAddHiddenAndContent(cardAddress, card.offer.address);
 
   const cardPrice = cardElement.querySelector('.popup__text--price');
   toAddHiddenAndContent(cardPrice,`${card.offer.price} ₽/ночь`);
@@ -80,10 +79,7 @@ similarCards.forEach((card) => {
   popupPhotos.appendChild(photoFragment);
   const cardAvatarSrc = cardElement.querySelector('.popup__avatar');
   toAddHiddenAndSrc(cardAvatarSrc, card.author.avatar);
-
-  similarCardsPlace.appendChild(cardElement);
 }
 );
 
-console.log(similarCardsPlace);
-
+export{similarCards};

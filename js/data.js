@@ -89,5 +89,4 @@ const createObject = (index) => {
 
 function similarObjects(count) {
   return [...Array(count)].map((item, index) => createObject(index));}
-// eslint-disable-next-line no-console
 export {similarObjects, SIMILAR_OBJECT_COUNT};

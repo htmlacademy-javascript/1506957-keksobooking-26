@@ -94,3 +94,4 @@ timeIn.addEventListener('change', () => {
 const address = document.querySelector('#address');
 
 export {address};
+export {placeholderPrice};
